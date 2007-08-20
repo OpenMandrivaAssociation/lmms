@@ -94,7 +94,7 @@ rm -rf %buildroot
 %_miconsdir/%{name}.png
 %_datadir/%{name}
 %_libdir/%{name}
-%_datadir/man/man?/*
+%_mandir/man?/*
 %{_datadir}/applications/*.desktop
 
 %post
