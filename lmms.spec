@@ -72,7 +72,7 @@ Exec=%{_bindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-Multimedia-Sound;Audio;Midi;Mixer;Sequencer;Recorder;KDE
+Categories=X-MandrivaLinux-Multimedia-Sound;Audio;Midi;Mixer;Sequencer;Recorder;KDE;
 EOF
 
 
