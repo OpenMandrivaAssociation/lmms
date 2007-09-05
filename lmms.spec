@@ -17,7 +17,8 @@ Source12:  %{name}-48.png
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: kdelibs-devel >= 3.2
 BuildRequires: libSDL-devel libalsa-devel libjack-devel
-Buildrequires: libsamplerate-devel libvorbis-devel
+BuildRequires: libsamplerate-devel libvorbis-devel
+BuildRequires: SDL_sound-devel
 
 %description
 
@@ -39,9 +40,7 @@ user-friendly and easy to use graphical user-interface
 %patch0 -p0 -b .desktop
 
 %build
-
-perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
-%configure
+%configure2_5x --without-singerbot --without-vst 
 %make
 
 %install
@@ -51,7 +50,8 @@ rm -rf %buildroot
 install -m644 %{SOURCE10} -D %buildroot/%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE11} -D %buildroot/%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D %buildroot/%{_liconsdir}/%{name}.png
-rm -f %buildroot/%{_libdir}/%{name}/*.a
+
+rm -f %buildroot/%{_libdir}/%{name}/*.a %buildroot%_datadir/menu/*
 
 %clean
 rm -rf %buildroot
@@ -67,9 +67,12 @@ rm -rf %buildroot
 %_libdir/%{name}
 %_mandir/man?/*
 %{_datadir}/applications/*.desktop
+%_datadir/mime/packages/%{name}.xml
 
 %post
 %{update_menus}
+%update_mime_database
 
 %postun
 %{clean_menus}
+%clean_mime_database
