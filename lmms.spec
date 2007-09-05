@@ -49,7 +49,7 @@ perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
 rm -rf %buildroot
 %{makeinstall_std}
 
-install -m644 %{SOUORCE1} -D %buildroot%_datadir/mimelnk/application/x-lmms-project.desktop
+install -m644 %{SOURCE1} -D %buildroot%_datadir/mimelnk/application/x-lmms-project.desktop
 
 install -m644 %{SOURCE10} -D %buildroot/%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE11} -D %buildroot/%{_iconsdir}/%{name}.png
