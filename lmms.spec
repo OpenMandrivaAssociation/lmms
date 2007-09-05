@@ -10,6 +10,7 @@ License:   GPL
 URL:       http://lmms.sourceforge.net/
 Group:     Sound
 Source:    http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source1:   x-lmms-project.desktop
 Patch0:    lmms-0.3.0-fix-desktop.patch
 Source10:  %{name}-16.png
 Source11:  %{name}-32.png
@@ -47,6 +48,8 @@ user-friendly and easy to use graphical user-interface
 rm -rf %buildroot
 %{makeinstall_std}
 
+install -m644 %{SOUORCE1} -D %buildroot%_datadir/mimelnk/application/x-lmms-project.desktop
+
 install -m644 %{SOURCE10} -D %buildroot/%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE11} -D %buildroot/%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D %buildroot/%{_liconsdir}/%{name}.png
@@ -68,6 +71,7 @@ rm -rf %buildroot
 %_mandir/man?/*
 %{_datadir}/applications/*.desktop
 %_datadir/mime/packages/%{name}.xml
+%_datadir/mimelnk/application/*.desktop
 
 %post
 %{update_menus}
