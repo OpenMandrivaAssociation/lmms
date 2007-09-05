@@ -41,6 +41,7 @@ user-friendly and easy to use graphical user-interface
 %patch0 -p0 -b .desktop
 
 %build
+perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
 %configure2_5x --without-singerbot --without-vst 
 %make
 
