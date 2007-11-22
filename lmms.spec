@@ -1,12 +1,12 @@
 %define name lmms
-%define version 0.3.0
+%define version 0.3.1
 %define release %mkrel 1
 
 Name:      %{name}
 Version:   %{version}
 Release:   %{release}
 Summary:   FruityLoops clone for linux
-License:   GPL
+License:   GPLv2+
 URL:       http://lmms.sourceforge.net/
 Group:     Sound
 Source:    http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
@@ -62,7 +62,7 @@ rm -rf %buildroot
 
 %files
 %defattr(-,root,root,-)
-%doc README COPYING TODO
+%doc README AUTHORS TODO
 %attr(0755,root,root) %_bindir/%{name}
 %_iconsdir/%{name}.png
 %_liconsdir/%{name}.png
