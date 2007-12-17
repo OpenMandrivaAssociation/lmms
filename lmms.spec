@@ -15,7 +15,6 @@ Patch0:    lmms-0.3.0-fix-desktop.patch
 Source10:  %{name}-16.png
 Source11:  %{name}-32.png
 Source12:  %{name}-48.png
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: kdelibs-devel >= 3.2
 BuildRequires: libSDL-devel libalsa-devel libjack-devel
 BuildRequires: libsamplerate-devel libvorbis-devel
