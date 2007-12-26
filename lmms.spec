@@ -12,6 +12,7 @@ Group:     Sound
 Source:    http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source1:   x-lmms-project.desktop
 Patch0:    lmms-0.3.0-fix-desktop.patch
+Patch1:		lmms-0.3.1-lib64-plugins.patch
 Source10:  %{name}-16.png
 Source11:  %{name}-32.png
 Source12:  %{name}-48.png
@@ -38,6 +39,10 @@ user-friendly and easy to use graphical user-interface
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
+
+%ifnarch ix86
+%patch1 -p1 -b .plugins
+%endif
 
 %build
 perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
