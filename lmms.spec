@@ -48,7 +48,7 @@ perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
 
 %install
 rm -rf %{buildroot}
-%{makeinstall_std}
+%makeinstall_std
 
 install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/mimelnk/application/x-lmms-project.desktop
 
@@ -64,7 +64,6 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README AUTHORS TODO
-#%attr(0755,root,root) 
 %{_bindir}/%{name}
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_datadir}/%{name}
