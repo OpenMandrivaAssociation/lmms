@@ -19,7 +19,6 @@ BuildRequires:	libsamplerate-devel
 BuildRequires:	SDL_sound-devel
 
 %description
-
 LMMS aims to be a free alternative to popular 
 (but commercial and closed- source) 
 programs like FruityLoops, Cubase and Logic giving 
