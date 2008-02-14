@@ -3,6 +3,7 @@ Name:		lmms
 Version:	0.3.1
 Release:	%mkrel 2
 Group:		Sound
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
