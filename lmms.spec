@@ -1,9 +1,8 @@
 Summary:	FruityLoops clone for linux
 Name:		lmms
 Version:	0.3.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		Sound
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
@@ -18,6 +17,7 @@ BuildRequires:	libSDL-devel
 BuildRequires:	libjack-devel
 BuildRequires:	libsamplerate-devel
 BuildRequires:	SDL_sound-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 LMMS aims to be a free alternative to popular 
@@ -58,6 +58,16 @@ install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name
 
 rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
 
+%post
+%{update_menus}
+%{update_mime_database}
+%update_icons_cache hicolor
+
+%postun
+%{clean_menus}
+%{clean_mime_database}
+%clean_icons_cache hicolor
+
 %clean
 rm -rf %{buildroot}
 
@@ -72,13 +82,3 @@ rm -rf %{buildroot}
 %{_datadir}/applications/*.desktop
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/mimelnk/application/*.desktop
-
-%post
-%{update_menus}
-%{update_mime_database}
-%update_icons_cache hicolor
-
-%postun
-%{clean_menus}
-%clean_mime_database
-%clean_icons_cache hicolor
