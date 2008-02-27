@@ -1,7 +1,7 @@
 Summary:	FruityLoops clone for linux
 Name:		lmms
 Version:	0.3.1
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -37,7 +37,7 @@ user-friendly and easy to use graphical user-interface
 %setup -q
 %patch0 -p0 -b .desktop
 
-%ifnarch ix86
+%if "%{_lib}" != "lib"
 %patch1 -p1 -b .plugins
 %endif
 
