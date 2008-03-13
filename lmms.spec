@@ -1,7 +1,7 @@
-Summary:	FruityLoops clone for linux
+Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.3.1
-Release:	%mkrel 5
+Version:	0.3.2
+Release:	%mkrel 1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -20,18 +20,24 @@ BuildRequires:	SDL_sound-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-LMMS aims to be a free alternative to popular 
-(but commercial and closed- source) 
-programs like FruityLoops, Cubase and Logic giving 
-you the ability of producing 
-music with your computer by creating/synthesizing sounds, 
-arranging samples, 
-playing live with keyboard and much more...
+LMMS aims to be a free alternative to popular (but commercial and closed- source) 
+programs like FruityLoops/FL Studio, Cubase and Logic allowing you to produce music 
+with your computer.This includes creation of loops, synthesizing and mixing sounds,
+arranging samples, having fun with your MIDI-keyboard and much more...
 
-LMMS combines the features of a tracker-/sequencer-program 
-(pattern-/channel-/ sample-/song-/effect-management) 
-and those of powerful synthesizers and samplers in a modern, 
-user-friendly and easy to use graphical user-interface
+LMMS combines the features of a tracker-/sequencer-program and those of powerful
+synthesizers, samplers, effects etc. in a modern, user-friendly and easy to use
+graphical user-interface.
+
+Features
+
+* Song-Editor for arranging the song
+* creating beats and basslines using the Beat-/Bassline-Editor
+* easy-to-use piano-roll for editing patterns and melodies
+* instrument and effect-plugins
+* support for hosting VST(i)- and LADSPA-plugins (instruments/effects)
+* automation-editor
+* MIDI-support
 
 %prep
 %setup -q
@@ -43,7 +49,12 @@ user-friendly and easy to use graphical user-interface
 
 %build
 perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
-%configure2_5x --without-singerbot --without-vst 
+%configure2_5x \
+	--without-singerbot \
+	--without-vst \
+	--with-linux \
+	--disable-static \
+	--enable-hqsinc
 %make
 
 %install
