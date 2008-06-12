@@ -69,15 +69,19 @@ install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name
 
 rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
 %{update_mime_database}
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %{clean_mime_database}
 %clean_icon_cache hicolor
+%endif
 
 %clean
 rm -rf %{buildroot}
