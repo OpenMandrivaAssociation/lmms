@@ -1,7 +1,7 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.3.2
-Release:	%mkrel 1
+Release:	%mkrel 3
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
