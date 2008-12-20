@@ -1,22 +1,26 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.3.2
-Release:	%mkrel 3
+Version:	0.4.2
+Release:	%mkrel 1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source1:	x-lmms-project.desktop
-Patch0:		lmms-0.3.0-fix-desktop.patch
-Patch1:		lmms-0.3.1-lib64-plugins.patch
+Patch0:		%{name}-0.4.2-fix-desktop.patch
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-BuildRequires:	kdelibs-devel >= 3.2
 BuildRequires:	libSDL-devel
 BuildRequires:	libjack-devel
 BuildRequires:	libsamplerate-devel
 BuildRequires:	SDL_sound-devel
+BuildRequires:	cmake
+BuildRequires:	qt4-devel
+BuildRequires:	libsndfile-devel
+BuildRequires:	libfftw-devel
+BuildRequires:	pulseaudio-devel
+BuildRequires:	libfluidsynth-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -39,27 +43,32 @@ Features
 * automation-editor
 * MIDI-support
 
+%package devel
+Summary:	Development package for %{name}
+Group:		Development/C
+
+%description devel
+Development files and headers for %{name}.
+
 %prep
 %setup -q
-%patch0 -p0 -b .desktop
-
-%if "%{_lib}" != "lib"
-%patch1 -p1 -b .plugins
-%endif
+%patch0 -p1
 
 %build
-perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
-%configure2_5x \
-	--without-singerbot \
-	--without-vst \
-	--with-linux \
-	--disable-static \
-	--enable-hqsinc
+%define Werror_cflags %nil
+%define _disable_ld_no_undefined 1
+
+# (tpg) fix ladspa plugins path
+sed -i -e 's#/usr/lib#%{_libdir}#g' src/core/ladspa_manager.cpp
+
+%cmake
 %make
 
 %install
 rm -rf %{buildroot}
+pushd build
 %makeinstall_std
+popd
 
 install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/mimelnk/application/x-lmms-project.desktop
 
@@ -97,3 +106,7 @@ rm -rf %{buildroot}
 %{_datadir}/applications/*.desktop
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/mimelnk/application/*.desktop
+
+%files devel
+%defattr(-,root,root)
+%{_includedir}/lmms
