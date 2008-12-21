@@ -1,7 +1,7 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.4.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -55,9 +55,6 @@ Development files and headers for %{name}.
 %patch0 -p1
 
 %build
-%define Werror_cflags %nil
-%define _disable_ld_no_undefined 1
-
 # (tpg) fix ladspa plugins path
 sed -i -e 's#/usr/lib#%{_libdir}#g' src/core/ladspa_manager.cpp
 
