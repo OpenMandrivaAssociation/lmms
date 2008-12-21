@@ -8,6 +8,7 @@ URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source1:	x-lmms-project.desktop
 Patch0:		%{name}-0.4.2-fix-desktop.patch
+Patch1:		lmms-0.4.2-literal.patch
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -53,8 +54,10 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1 -b .literal
 
 %build
+%define _ld_disable_no_undefined	1
 # (tpg) fix ladspa plugins path
 sed -i -e 's#/usr/lib#%{_libdir}#g' src/core/ladspa_manager.cpp
 
