@@ -57,7 +57,7 @@ Development files and headers for %{name}.
 %patch1 -p1 -b .literal
 
 %build
-%define _ld_disable_no_undefined	1
+%define _disable_ld_no_undefined	1
 # (tpg) fix ladspa plugins path
 sed -i -e 's#/usr/lib#%{_libdir}#g' src/core/ladspa_manager.cpp
 
