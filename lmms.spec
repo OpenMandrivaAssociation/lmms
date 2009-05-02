@@ -1,14 +1,14 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.4.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-Source1:	x-lmms-project.desktop
 Patch0:		%{name}-0.4.2-fix-desktop.patch
 Patch1:		lmms-0.4.2-literal.patch
+Patch2:		lmms-0.4.2-libdir.patch
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -55,22 +55,15 @@ Development files and headers for %{name}.
 %setup -q
 %patch0 -p1
 %patch1 -p1 -b .literal
+%patch2 -p1 -b .libdir
 
 %build
-%define _disable_ld_no_undefined	1
-# (tpg) fix ladspa plugins path
-sed -i -e 's#/usr/lib#%{_libdir}#g' src/core/ladspa_manager.cpp
-
 %cmake
 %make
 
 %install
 rm -rf %{buildroot}
-pushd build
-%makeinstall_std
-popd
-
-install -m644 %{SOURCE1} -D %{buildroot}%{_datadir}/mimelnk/application/x-lmms-project.desktop
+%makeinstall_std -C build
 
 install -m644 %{SOURCE10} -D %{buildroot}/%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 install -m644 %{SOURCE11} -D %{buildroot}/%{_iconsdir}/hicolor/32x32/apps/%{name}.png
@@ -105,7 +98,6 @@ rm -rf %{buildroot}
 %{_mandir}/man?/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/mimelnk/application/*.desktop
 
 %files devel
 %defattr(-,root,root)
