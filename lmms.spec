@@ -22,6 +22,7 @@ BuildRequires:	libsndfile-devel
 BuildRequires:	libfftw-devel
 BuildRequires:	pulseaudio-devel
 BuildRequires:	libfluidsynth-devel
+BuildRequires:	libxft-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
