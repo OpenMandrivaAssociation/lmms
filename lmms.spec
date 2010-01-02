@@ -1,6 +1,8 @@
+%define Werror_cflags %nil
+
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.4.5
+Version:	0.4.6
 Release:	%mkrel 1
 Group:		Sound
 License:	GPLv2+
