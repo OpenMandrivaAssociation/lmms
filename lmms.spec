@@ -23,6 +23,7 @@ BuildRequires:	libfftw-devel
 BuildRequires:	pulseaudio-devel
 BuildRequires:	libfluidsynth-devel
 BuildRequires:	libxft-devel
+BuildRequires:	libxinerama-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
