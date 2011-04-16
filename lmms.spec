@@ -2,13 +2,12 @@
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.4.8
+Version:	0.4.10
 Release:	%mkrel 1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
 Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-Patch2:		lmms-0.4.2-libdir.patch
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -55,7 +54,6 @@ Development files and headers for %{name}.
 
 %prep
 %setup -q
-%patch2 -p1 -b .libdir
 
 %build
 %cmake
