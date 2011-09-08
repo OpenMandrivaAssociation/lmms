@@ -11,6 +11,7 @@ Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.ta
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
+Patch:		%{name}.desktop.patch
 BuildRequires:	libSDL-devel
 BuildRequires:	libjack-devel
 BuildRequires:	libsamplerate-devel
@@ -54,6 +55,7 @@ Development files and headers for %{name}.
 
 %prep
 %setup -q
+%patch -p0
 
 %build
 %cmake
