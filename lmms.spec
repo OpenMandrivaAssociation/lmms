@@ -3,7 +3,7 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.4.12
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -11,7 +11,7 @@ Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.ta
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-Patch:		%{name}.desktop.patch
+Patch0:		%{name}.desktop.patch
 BuildRequires:	libSDL-devel
 BuildRequires:	libjack-devel
 BuildRequires:	libsamplerate-devel
@@ -55,10 +55,13 @@ Development files and headers for %{name}.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
+
+# remove spurious x-bits
+find . -type f -exec chmod 0644 {} \;
 
 %build
-%cmake
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} ../
 %make
 
 %install
@@ -70,20 +73,6 @@ install -m644 %{SOURCE11} -D %{buildroot}/%{_iconsdir}/hicolor/32x32/apps/%{name
 install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%{update_mime_database}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%{clean_mime_database}
-%clean_icon_cache hicolor
-%endif
 
 %clean
 rm -rf %{buildroot}
