@@ -13,7 +13,7 @@ Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 Patch0:		%{name}.desktop.patch
 BuildRequires:	libSDL-devel
-BuildRequires:	libjack-devel
+BuildRequires:	jackit-devel
 BuildRequires:	libsamplerate-devel
 BuildRequires:	SDL_sound-devel
 BuildRequires:	cmake
