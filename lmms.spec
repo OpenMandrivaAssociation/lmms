@@ -2,12 +2,12 @@
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.4.12
-Release:	%mkrel 2
+Version:	0.4.13
+Release:	%mkrel 1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
-Source:		http://ovh.dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/project/lmms/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
@@ -24,17 +24,17 @@ BuildRequires:	pulseaudio-devel
 BuildRequires:	libfluidsynth-devel
 BuildRequires:	libxft-devel
 BuildRequires:	libxinerama-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-LMMS aims to be a free alternative to popular (but commercial and closed- source) 
-programs like FruityLoops/FL Studio, Cubase and Logic allowing you to produce music 
-with your computer.This includes creation of loops, synthesizing and mixing sounds,
-arranging samples, having fun with your MIDI-keyboard and much more...
+LMMS aims to be a free alternative to popular (but commercial and closed-
+source) programs like FruityLoops/FL Studio, Cubase and Logic allowing you
+to produce music with your computer.This includes creation of loops,
+synthesizing and mixing sounds, arranging samples, having fun with your
+MIDI-keyboard and much more...
 
-LMMS combines the features of a tracker-/sequencer-program and those of powerful
-synthesizers, samplers, effects etc. in a modern, user-friendly and easy to use
-graphical user-interface.
+LMMS combines the features of a tracker-/sequencer-program and those
+of powerful synthesizers, samplers, effects etc. in a modern, user-friendly
+and easy to use graphical user-interface.
 
 Features
 
@@ -61,11 +61,10 @@ Development files and headers for %{name}.
 find . -type f -exec chmod 0644 {} \;
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} ../
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std -C build
 
 install -m644 %{SOURCE10} -D %{buildroot}/%{_iconsdir}/hicolor/16x16/apps/%{name}.png
@@ -73,9 +72,6 @@ install -m644 %{SOURCE11} -D %{buildroot}/%{_iconsdir}/hicolor/32x32/apps/%{name
 install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
