@@ -1,0 +1,16 @@
+--- data/lmms.desktop.old	2011-07-02 17:14:01.000000000 +0400
++++ data/lmms.desktop	2011-09-09 00:09:13.000000000 +0400
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+ Name=Linux MultiMedia Studio
++Name[ru]=Linux cтудия мультимедиа
+ GenericName=music production suite
+ GenericName[ca]=Programari de producció musical
+ GenericName[de]=Software zur Musik-Produktion
++GenericName[ru]=Комплект для создания музыки
+ Comment=easy music production for everyone!
+ Comment[ca]=Producció fàcil de música per a tothom!
++Comment[ru]=Легкое создание музыки для всех!
+ Icon=lmms
+ Exec=lmms
+ Terminal=false
