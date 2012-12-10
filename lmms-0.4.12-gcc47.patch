@@ -1,0 +1,25 @@
+From: Thomas Moschny <thomas.moschny@gmx.de>
+Subject: [PATCH] t/gcc-47
+
+Small fix for gcc 4.7 compatibility.
+
+Signed-off-by: Thomas Moschny <thomas.moschny@gmx.de>
+
+---
+ plugins/zynaddsubfx/LocalZynAddSubFx.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/plugins/zynaddsubfx/LocalZynAddSubFx.cpp b/plugins/zynaddsubfx/LocalZynAddSubFx.cpp
+index 34663c2..e5caf57 100644
+--- a/plugins/zynaddsubfx/LocalZynAddSubFx.cpp
++++ b/plugins/zynaddsubfx/LocalZynAddSubFx.cpp
+@@ -30,6 +30,7 @@
+ #include "src/Misc/Master.h"
+ #include "src/Misc/Dump.h"
+ 
++#include <unistd.h>
+ 
+ int LocalZynAddSubFx::s_instanceCount = 0;
+ 
+-- 
+tg: (5a35d32..) t/gcc-47 (depends on: stable-0.4)

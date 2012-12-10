@@ -3,7 +3,7 @@
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.4.13
-Release:	%mkrel 1
+Release:	2
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -12,18 +12,19 @@ Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 Patch0:		%{name}.desktop.patch
-BuildRequires:	libSDL-devel
-BuildRequires:	jackit-devel
-BuildRequires:	libsamplerate-devel
-BuildRequires:	SDL_sound-devel
+Patch1:		lmms-0.4.12-gcc47.patch
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
-BuildRequires:	libsndfile-devel
-BuildRequires:	libfftw-devel
-BuildRequires:	pulseaudio-devel
-BuildRequires:	libfluidsynth-devel
-BuildRequires:	libxft-devel
-BuildRequires:	libxinerama-devel
+BuildRequires:	SDL_sound-devel
+BuildRequires:	pkgconfig(fftw3)
+BuildRequires:	pkgconfig(fluidsynth)
+BuildRequires:	pkgconfig(jack)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	pkgconfig(samplerate)
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(sndfile)
+BuildRequires:	pkgconfig(xft)
+BuildRequires:	pkgconfig(xinerama)
 
 %description
 LMMS aims to be a free alternative to popular (but commercial and closed-
@@ -56,6 +57,7 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
 
 # remove spurious x-bits
 find . -type f -exec chmod 0644 {} \;
@@ -74,7 +76,6 @@ install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name
 rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
 
 %files
-%defattr(-,root,root)
 %doc README AUTHORS TODO
 %{_bindir}/%{name}
 %{_iconsdir}/hicolor/*/apps/%{name}.png
@@ -86,5 +87,6 @@ rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
 %{_datadir}/pixmaps/lmms.png
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/lmms
+
+
