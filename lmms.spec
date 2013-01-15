@@ -1,9 +1,11 @@
 %define Werror_cflags %nil
+# RemoteZynAddSubFx doesn't work without rpath
+%global _cmake_skip_rpath %{nil}
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
 Version:	0.4.13
-Release:	2
+Release:	3
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
