@@ -4,8 +4,8 @@
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	0.4.13
-Release:	4
+Version:	1.2.0
+Release:	1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
@@ -15,18 +15,34 @@ Source11:	%{name}-32.png
 Source12:	%{name}-48.png
 Patch0:		%{name}.desktop.patch
 Patch1:		lmms-0.4.12-gcc47.patch
-BuildRequires:	cmake
-BuildRequires:	qt4-devel
-BuildRequires:	SDL_sound-devel
-BuildRequires:	pkgconfig(fftw3)
-BuildRequires:	pkgconfig(fluidsynth)
-BuildRequires:	pkgconfig(jack)
-BuildRequires:	pkgconfig(libpulse)
-BuildRequires:	pkgconfig(samplerate)
-BuildRequires:	pkgconfig(sdl)
-BuildRequires:	pkgconfig(sndfile)
-BuildRequires:	pkgconfig(xft)
-BuildRequires:	pkgconfig(xinerama)
+BuildRequires:  cmake
+BuildRequires:  doxygen
+BuildRequires:  git
+BuildRequires:  icoutils
+BuildRequires:  fltk-devel
+BuildRequires:  lame-devel
+BuildRequires:  SDL_sound-devel
+BuildRequires:  sndio-devel
+BuildRequires:  soundio-devel
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Help)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(gig)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xinerama)
 
 %description
 LMMS aims to be a free alternative to popular (but commercial and closed-
@@ -57,25 +73,34 @@ Group:		Development/C
 Development files and headers for %{name}.
 
 %prep
-%setup -q
-%patch0 -p0
-%patch1 -p1
+%setup -q -n %{name}-%{version}%{?prel:~%{prel2}}
+%autopatch -p1
 
 # remove spurious x-bits
 find . -type f -exec chmod 0644 {} \;
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}
-%make
+%cmake \
+      -Wno-dev \
+      -DWANT_QT5=ON \
+      -DWANT_SDL:BOOL=ON \
+      -DWANT_PORTAUDIO:BOOL=ON \
+      -DWANT_CAPS:BOOL=ON \
+      -DWANT_TAP:BOOL=ON \
+      -DWANT_SWH:BOOL=ON \
+      -DWANT_CALF:BOOL=ON \
+%ifarch %ix86
+      -DWANT_VST:BOOL=ON \
+%else
+      -DWANT_VST:BOOL=OFF \
+%endif
+      -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+      ../
+%make_build VERBOSE=1
+
 
 %install
-%makeinstall_std -C build
-
-install -m644 %{SOURCE10} -D %{buildroot}/%{_iconsdir}/hicolor/16x16/apps/%{name}.png
-install -m644 %{SOURCE11} -D %{buildroot}/%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-install -m644 %{SOURCE12} -D %{buildroot}/%{_iconsdir}/hicolor/48x48/apps/%{name}.png
-
-rm -f %{buildroot}/%{_libdir}/%{name}/*.a %{buildroot}%{_datadir}/menu/*
+%make_install -C build
 
 %files
 %doc README AUTHORS TODO
