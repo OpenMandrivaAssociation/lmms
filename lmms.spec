@@ -9,7 +9,7 @@ Release:	1
 Group:		Sound
 License:	GPLv2+
 URL:		http://lmms.sourceforge.net/
-Source0:	https://downloads.sourceforge.net/project/lmms/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:	https://github.com/LMMS/lmms/releases/download/v%{version}/lmms_%{version}.tar.xz
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
