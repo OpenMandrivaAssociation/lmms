@@ -22,8 +22,8 @@ BuildRequires:  icoutils
 BuildRequires:  fltk-devel
 BuildRequires:  lame-devel
 BuildRequires:  SDL_sound-devel
-BuildRequires:  sndio-devel
-BuildRequires:  soundio-devel
+#BuildRequires:  sndio-devel
+#BuildRequires:  soundio-devel
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(samplerate)
