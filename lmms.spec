@@ -13,8 +13,8 @@ Source0:	https://github.com/LMMS/lmms/releases/download/v%{version}/lmms_%{versi
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
 Source12:	%{name}-48.png
-Patch0:		%{name}.desktop.patch
-Patch1:		lmms-0.4.12-gcc47.patch
+#Patch0:		%{name}.desktop.patch
+#Patch1:		lmms-0.4.12-gcc47.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  git
