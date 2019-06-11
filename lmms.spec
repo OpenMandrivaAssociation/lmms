@@ -1,6 +1,6 @@
 %define Werror_cflags %nil
 # RemoteZynAddSubFx doesn't work without rpath
-%global _cmake_skip_rpath %{nil}
+#global _cmake_skip_rpath %{nil}
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
@@ -18,6 +18,7 @@ Source12:	%{name}-48.png
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  git
+BuildRequires:  qmake5
 BuildRequires:  icoutils
 BuildRequires:  fltk-devel
 BuildRequires:  lame-devel
