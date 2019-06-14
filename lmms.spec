@@ -20,11 +20,14 @@ BuildRequires:  doxygen
 BuildRequires:  git
 BuildRequires:  qmake5
 BuildRequires:  icoutils
+BuildRequires:  fltk-fluid
 BuildRequires:  fltk-devel
 BuildRequires:  lame-devel
 BuildRequires:  SDL_sound-devel
-#BuildRequires:  sndio-devel
-#BuildRequires:  soundio-devel
+BuildRequires:  sndio-devel
+BuildRequires:  soundio-devel
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(samplerate)
@@ -44,6 +47,7 @@ BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 LMMS aims to be a free alternative to popular (but commercial and closed-
