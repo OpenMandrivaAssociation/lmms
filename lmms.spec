@@ -110,17 +110,17 @@ find . -type f -exec chmod 0644 {} \;
 %make_install -C build
 
 %files
-%doc README AUTHORS TODO
 %{_bindir}/%{name}
-%{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_datadir}/%{name}
-%{_libdir}/%{name}
-%{_mandir}/man?/*
-%{_datadir}/applications/*.desktop
+%{_datadir}/%{name}/
+%{_libdir}/%{name}/
+%{_mandir}/man?/%{name}.1*
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/pixmaps/lmms.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.svg
+%{_iconsdir}/hicolor/*/mimetypes/application-x-%{name}-project.png
+%{_iconsdir}/hicolor/*/mimetypes/application-x-%{name}-project.svg
+%{_datadir}/bash-completion/completions/%{name}
 
 %files devel
-%{_includedir}/lmms
-
-
+%{_includedir}/%{name}/
