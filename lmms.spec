@@ -28,8 +28,10 @@ BuildRequires:  sndio-devel
 BuildRequires:  soundio-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
