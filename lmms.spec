@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xcb)
 
 %description
 LMMS aims to be a free alternative to popular (but commercial and closed-
