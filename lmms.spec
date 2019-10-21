@@ -4,7 +4,7 @@
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	1.2.0
+Version:	1.2.1
 Release:	1
 Group:		Sound
 License:	GPLv2+
