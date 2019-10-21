@@ -4,7 +4,7 @@
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	1.2.0
+Version:	1.2.1
 Release:	1
 Group:		Sound
 License:	GPLv2+
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(xfixes)
 
 %description
 LMMS aims to be a free alternative to popular (but commercial and closed-
