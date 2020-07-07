@@ -82,7 +82,7 @@ Group:		Development/C
 Development files and headers for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}%{?prel:~%{prel2}}
+%setup -q -n %{name}
 %autopatch -p1
 
 # remove spurious x-bits
