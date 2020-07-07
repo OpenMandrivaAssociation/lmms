@@ -1,10 +1,13 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define Werror_cflags %nil
 # RemoteZynAddSubFx doesn't work without rpath
 #global _cmake_skip_rpath %{nil}
 
 Summary:	Linux MultiMedia Studio
 Name:		lmms
-Version:	1.2.1
+Version:	1.2.2
 Release:	1
 Group:		Sound
 License:	GPLv2+
@@ -82,7 +85,7 @@ Group:		Development/C
 Development files and headers for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}%{?prel:~%{prel2}}
+%setup -q -n %{name}
 %autopatch -p1
 
 # remove spurious x-bits
