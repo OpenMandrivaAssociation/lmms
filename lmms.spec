@@ -1,3 +1,6 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define Werror_cflags %nil
 # RemoteZynAddSubFx doesn't work without rpath
 #global _cmake_skip_rpath %{nil}
