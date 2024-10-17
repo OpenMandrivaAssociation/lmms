@@ -11,7 +11,7 @@ Version:	1.2.2
 Release:	3
 Group:		Sound
 License:	GPLv2+
-URL:		http://lmms.sourceforge.net/
+URL:		https://lmms.sourceforge.net/
 Source0:	https://github.com/LMMS/lmms/releases/download/v%{version}/lmms_%{version}.tar.xz
 Source10:	%{name}-16.png
 Source11:	%{name}-32.png
